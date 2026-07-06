@@ -1,0 +1,10 @@
+enum Role {
+    TENANT
+    LANDLOARD
+    ADMIN
+}
+
+enum UserActiveStatus {
+    ACTIVE
+    BLOCK
+}
