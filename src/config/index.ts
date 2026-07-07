@@ -8,7 +8,8 @@ path:path.join(process.cwd(), '.env')
 
 export default{
     path: process.env.PORT,
-    dataBaseUrl: process.env.DATABASE_URL
+    dataBaseUrl: process.env.DATABASE_URL,
+    bcryptSaltRounds: process.env.BCRYPT_SALT_ROUNDS!,
 
 }
 
