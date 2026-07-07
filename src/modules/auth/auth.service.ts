@@ -1,6 +1,6 @@
 import config from "../../config";
 import { prisma } from "../../lib/prisma";
-import { IUser } from "./auth.interface";
+import { IUser, IUserLogin } from "./auth.interface";
 import bcrypt from 'bcrypt'
 
 const createUserIntoDb = async (payload: IUser) => {
@@ -18,7 +18,7 @@ const createUserIntoDb = async (payload: IUser) => {
 
     }
 
-    const hashPassword= await bcrypt.hash(password, Number(config.bcryptSaltRounds));
+    const hashPassword = await bcrypt.hash(password, Number(config.bcryptSaltRounds));
 
     const createdUser = await prisma.user.create({
         data: {
@@ -50,7 +50,29 @@ const createUserIntoDb = async (payload: IUser) => {
 
     return user;
 }
+const loginUserFromDb = async (payload: IUserLogin
+) => {
+    const { email, password } = payload;
+
+    const user = await prisma.user.findUniqueOrThrow({
+        where: {
+            email
+        },
+      
+    })
+
+    const isPasswordMatched = await bcrypt.compare(password, user.password);
+    console.log(user.password);
+
+    if (!isPasswordMatched) {
+        throw new Error('Invalid Credentials');
+    }
+
+    return user;
+}
+
 
 export const authService = {
-    createUserIntoDb
+    createUserIntoDb,
+    loginUserFromDb
 }
