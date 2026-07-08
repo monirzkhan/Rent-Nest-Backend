@@ -1,6 +1,6 @@
 enum Role {
     TENANT
-    LANDLOARD
+    LANDLORD
     ADMIN
 }
 

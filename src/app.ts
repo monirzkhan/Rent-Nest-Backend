@@ -2,6 +2,8 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { authRoutes } from "./modules/auth/auth.route";
+import { landlordRoutes } from "./modules/landlordManagement/landlord.routes";
+import { categoryRoutes } from "./modules/category/category.routes";
 
 
 const app: Application= express();
@@ -23,5 +25,7 @@ app.get('/', (req: Request, res: Response)=>{
 })
 
 app.use('/api/auth/', authRoutes)
+app.use('/api/landlord/', landlordRoutes)
+app.use('/api/categories/', categoryRoutes)
 
 export default app;
