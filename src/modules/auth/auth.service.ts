@@ -58,7 +58,8 @@ const loginUserFromDb = async (payload: IUserLogin
         where: {
             email
         },
-      
+        
+       
     })
 
     const isPasswordMatched = await bcrypt.compare(password, user.password);
