@@ -62,12 +62,27 @@ const DeleteProperty = catchAsync(async(req: Request, res: Response, next: NextF
     })
 })
 
+const getAllRentalRequests = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
+    const landlordId = req.user?.id;
+    if(!landlordId){
+        return next(new Error("Landlord ID is missing in the request"));
+    }
+    const result = await landlordService.getAllRentalRequestsFromDb(landlordId as string);
+    sendResponse(res,{
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Rental Requests Fetched Successfully",
+        data: result
+    })
+})
+
 
 export const landlordController={
     createProperty,
     getAllProperties,
     getPropertyById,
     UpdateProperty,
-    DeleteProperty
+    DeleteProperty,
+    getAllRentalRequests
 } 
  
