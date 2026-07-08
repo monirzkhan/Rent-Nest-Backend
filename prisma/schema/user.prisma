@@ -1,17 +1,18 @@
 model User {
-    id String  @id @default(uuid())
-    name String @db.VarChar(255)
-    email String @unique
-    password String 
-    role Role @default(TENANT)
+    id           String           @id @default(uuid())
+    name         String           @db.VarChar(255)
+    email        String           @unique
+    password     String
+    role         Role             @default(TENANT)
     activeStatus UserActiveStatus @default(ACTIVE)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    profile Profile?
+    profile        Profile?
+    property       Property?
+    rentalRequests RentalRequest[]
+    reviews        Review[]
 
     @@map("users")
 }
-
-

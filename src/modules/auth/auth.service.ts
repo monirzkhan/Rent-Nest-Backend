@@ -60,8 +60,8 @@ const loginUserFromDb = async (payload: IUserLogin
         where: {
             email
         },
-        
-       
+
+
     })
 
     const isPasswordMatched = await bcrypt.compare(password, user.password);
@@ -71,23 +71,41 @@ const loginUserFromDb = async (payload: IUserLogin
         throw new Error('Invalid Credentials');
     }
 
-    const jwtPayload={
+    const jwtPayload = {
         name: user.name,
         id: user.id,
-        email:user.email,
+        email: user.email,
         password: user.password,
-        role:user.role,
+        role: user.role,
     }
 
-    const accessToken= jwtUtils.createToken(jwtPayload, config.jwtAccessSecret,config.jwtAccessExpireIn as SignOptions)
+    const accessToken = jwtUtils.createToken(jwtPayload, config.jwtAccessSecret, config.jwtAccessExpireIn as SignOptions)
 
-    const refreshToken= jwtUtils.createToken(jwtPayload, config.jwtRefreshSecret,config.jwtRefreshExpireIn as SignOptions)
+    const refreshToken = jwtUtils.createToken(jwtPayload, config.jwtRefreshSecret, config.jwtRefreshExpireIn as SignOptions)
 
-    return {accessToken, refreshToken};
+    return { accessToken, refreshToken };
+}
+
+const getMyProfileFromDb = async (userId: string) => {
+    const user = await prisma.user.findFirstOrThrow({
+        where: {
+            id: userId
+        },
+        include: {
+            profile: true
+        },
+        omit: {  
+            password: true
+        }   
+    })
+
+
+    return user;
 }
 
 
 export const authService = {
     createUserIntoDb,
-    loginUserFromDb
+    loginUserFromDb,
+    getMyProfileFromDb
 }

@@ -8,7 +8,13 @@ const createToken = (payload: JwtPayload, secret: string, expiresIn: SignOptions
 
 }
 
+const verifyToken = (token: string, secret: string) => {
+    const decoded = jwt.verify(token, secret) as JwtPayload;
+    return decoded;
+}
+
 
 export const jwtUtils = {
-    createToken
+    createToken,
+    verifyToken
 }
