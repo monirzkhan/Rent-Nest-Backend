@@ -18,8 +18,56 @@ const createProperty =catchAsync(async(req: Request, res: Response, next: NextFu
     
 })
 
+const getAllProperties = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
+    const result = await landlordService.getAllPropertiesFromDb();
+    sendResponse(res,{
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Properties Fetched Successfully",
+        data: result
+    })
+})  
+
+const getPropertyById = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
+    const propertyId = req.params.id;
+    const result = await landlordService.getPropertyByIdFromDb(propertyId as string);
+    sendResponse(res,{
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Property Fetched Successfully",
+        data: result
+    })
+})
+
+const UpdateProperty = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
+    const propertyId = req.params.id;
+    const payload = req.body;
+    const result = await landlordService.updatePropertyInDb(propertyId as string, payload);
+    sendResponse(res,{
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Property Updated Successfully",
+        data: result
+    })
+})
+
+const DeleteProperty = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{     
+    const propertyId = req.params.id;
+    const result = await landlordService.DeletePropertyFromDb(propertyId as string);
+    sendResponse(res,{
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Property Deleted Successfully",
+        data:  null
+    })
+})
 
 
 export const landlordController={
-    createProperty
+    createProperty,
+    getAllProperties,
+    getPropertyById,
+    UpdateProperty,
+    DeleteProperty
 } 
+ 

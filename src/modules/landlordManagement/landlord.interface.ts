@@ -1,22 +1,42 @@
-import { EnumPropertyStatusFieldUpdateOperationsInput } from "../../../generated/prisma/models/Property";
+import { PropertyStatus } from "../../../generated/prisma/enums";
 
-export interface IProperty {
+export interface ICreateProperty {
   title: string;
-  description: string;
+  description?: string;
 
   rentAmount: number;
 
   bedrooms: number;
   bathrooms: number;
-  area?: number;
+  areas?: number;
 
-  address: string;
+  address?: string;
 
   thumbnail?: string;
   images: string[];
 
-  status: EnumPropertyStatusFieldUpdateOperationsInput;
+  status?: PropertyStatus;
 
-  landlordId: string;
+  landlordId?: string;
   categoryId: string;
+}
+
+export interface IUpdateProperty {
+  title?: string;
+  description?: string;
+
+  rentAmount?: number;
+
+  bedrooms?: number;
+  bathrooms?: number;
+  areas?: number;
+
+  address?: string;
+
+  thumbnail?: string;
+  images?: string[];
+
+  status?: PropertyStatus;
+
+  categoryId?: string;
 }
