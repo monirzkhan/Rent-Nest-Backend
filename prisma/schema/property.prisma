@@ -15,8 +15,8 @@ model Property {
 
     status PropertyStatus @default(AVAILABLE)
 
-    landlordID String @unique
-    landlord   User   @relation(fields: [landlordID], references: [id], onDelete: Cascade)
+    landlordId String @unique
+    landlord   User   @relation(fields: [landlordId], references: [id], onDelete: Cascade)
 
     categoryId String
     category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
@@ -28,7 +28,7 @@ model Property {
     updatedAt DateTime @updatedAt
 
     @@index([categoryId])
-    @@index([landlordID])
+    @@index([landlordId])
     @@index([address])
     @@index([rentAmount])
     @@index([status])
