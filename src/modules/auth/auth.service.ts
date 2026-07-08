@@ -1,5 +1,7 @@
+import { SignOptions } from "jsonwebtoken";
 import config from "../../config";
 import { prisma } from "../../lib/prisma";
+import { jwtUtils } from "../../Utilities/jwt";
 import { IUser, IUserLogin } from "./auth.interface";
 import bcrypt from 'bcrypt'
 
@@ -69,7 +71,19 @@ const loginUserFromDb = async (payload: IUserLogin
         throw new Error('Invalid Credentials');
     }
 
-    return user;
+    const jwtPayload={
+        name: user.name,
+        id: user.id,
+        email:user.email,
+        password: user.password,
+        role:user.role,
+    }
+
+    const accessToken= jwtUtils.createToken(jwtPayload, config.jwtAccessSecret,config.jwtAccessExpireIn as SignOptions)
+
+    const refreshToken= jwtUtils.createToken(jwtPayload, config.jwtRefreshSecret,config.jwtRefreshExpireIn as SignOptions)
+
+    return {accessToken, refreshToken};
 }
 
 
