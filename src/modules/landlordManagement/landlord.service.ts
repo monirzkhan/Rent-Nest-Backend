@@ -69,12 +69,53 @@ const DeletePropertyFromDb = async (propertyId: string) => {
     return property;
 }
 
+const getAllRentalRequestsFromDb = async (landlordId: string) => {
+    const rentalRequests = await prisma.rentalRequest.findMany({
+        where: {
+            property: {
+                landlordId: landlordId
+            }
+        },
+        include: {
+            property: true,
+            tenant: {
+                omit: {
+                    password: true
+                }
+            }
+        }
+    });
+    return rentalRequests;
+}   
+
+const updateRentalRequestByIdInDb = async (rentalRequestId: string, payload: any) => {
+    const rentalRequest = await prisma.rentalRequest.update({
+        where: {
+            id: rentalRequestId
+        },
+        data: {
+            ...payload
+        },
+        include: {
+            property: true,
+            tenant: {
+                omit: {
+                    password: true
+                }
+            }
+        }
+    });
+    return rentalRequest;
+}         
+
 export const landlordService = {
     createPropertyIntoDb,
     getAllPropertiesFromDb,
     getPropertyByIdFromDb,
     updatePropertyInDb,
-    DeletePropertyFromDb
+    DeletePropertyFromDb,
+    getAllRentalRequestsFromDb,
+    updateRentalRequestByIdInDb
 }
 
    

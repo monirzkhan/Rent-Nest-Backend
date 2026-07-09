@@ -76,6 +76,20 @@ const getAllRentalRequests = catchAsync(async(req: Request, res: Response, next:
     })
 })
 
+const updateRentalRequestById = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
+    const rentalRequestId = req.params.id;
+    
+    const payload = req.body;
+    
+    const result = await landlordService.updateRentalRequestByIdInDb(rentalRequestId as string, payload);
+    sendResponse(res,{
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Rental Request Updated Successfully",
+        data: result
+    })
+})
+
 
 export const landlordController={
     createProperty,
@@ -83,6 +97,7 @@ export const landlordController={
     getPropertyById,
     UpdateProperty,
     DeleteProperty,
-    getAllRentalRequests
+    getAllRentalRequests,
+    updateRentalRequestById
 } 
  

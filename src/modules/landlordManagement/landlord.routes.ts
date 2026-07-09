@@ -9,6 +9,7 @@ router.get('/properties',landlordController.getAllProperties)
 router.get('/properties/:id',landlordController.getPropertyById)
 router.put('/properties/:id',landlordController.UpdateProperty)
 router.delete('/properties/:id',landlordController.DeleteProperty)
-router.get('/requests',auth("LANDLORD"),landlordController.getAllRentalRequests)
+router.get('/requests/',auth("LANDLORD"),landlordController.getAllRentalRequests)
+router.patch('/requests/:id',auth("LANDLORD"),landlordController.updateRentalRequestById)
 
 export const landlordRoutes = router;
