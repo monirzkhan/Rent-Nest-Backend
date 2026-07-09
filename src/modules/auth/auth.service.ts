@@ -65,7 +65,7 @@ const loginUserFromDb = async (payload: IUserLogin
     })
 
     const isPasswordMatched = await bcrypt.compare(password, user.password);
-    console.log(user.password);
+    // console.log(user.password);
 
     if (!isPasswordMatched) {
         throw new Error('Invalid Credentials');

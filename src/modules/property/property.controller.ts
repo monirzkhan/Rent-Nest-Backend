@@ -6,7 +6,7 @@ import { propertyService } from "./property.service";
 
 const getAllProperties = (catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const query = req.query;
-    console.log("Query",query);
+    // console.log("Query",query);
     const result = await propertyService.getAllPropertiesfromDb(query);
     sendResponse(res, {
         statusCode: HttpStatus.OK,

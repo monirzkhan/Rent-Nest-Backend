@@ -8,7 +8,7 @@ const createRentalRequest = catchAsync(async (req: Request, res: Response, next:
 
     const payload = req.body;
     const tenantId = req.user?.id;
-    console.log(tenantId);
+    // console.log(tenantId);
     if (!tenantId) {
         return next(new Error("Tenant ID is missing in the request"));
     }
