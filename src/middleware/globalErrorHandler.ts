@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import { sendResponse } from "../Utilities/sendResponse";
 import httpStatus from "http-status";
 import { Prisma } from "../../generated/prisma/client";
 
