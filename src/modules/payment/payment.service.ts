@@ -200,8 +200,34 @@ const confirmPaymentIntoDb = async (sessionId: string) => {
 
 }
 
+const getPaymentHistoryfromDb = async (userId: string) => {
+    const result = await prisma.payment.findMany({
+        include:{
+            rentalRequest: true
+        }
+    })
+    return result
+
+}
+const getPaymentHistoryByIdfromDb = async (paymentId: string) => {
+    const result = await prisma.payment.findFirstOrThrow({
+        where:{
+            id: paymentId,
+            
+        },
+        include:{
+            rentalRequest:true,
+            
+        }
+    })
+    return result
+
+}
+
 export const paymentService = {
     createPaymentIntoDb,
     handleWebhook,
-    confirmPaymentIntoDb
+    confirmPaymentIntoDb,
+    getPaymentHistoryfromDb,
+    getPaymentHistoryByIdfromDb
 };
