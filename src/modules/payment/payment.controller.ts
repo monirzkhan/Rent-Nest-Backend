@@ -39,7 +39,21 @@ const handleWebhook = catchAsync(
         })
     }
 )
+
+const confirmPayment =catchAsync(async(req : Request, res : Response, next : NextFunction)=>{
+
+    const sessionId= req.body.sessionId
+    const result= await paymentService.confirmPaymentIntoDb(sessionId as string)
+     sendResponse(res, {
+            success : true,
+            statusCode : 200,
+            message : "Payment Confirmed successfully",
+            data : result
+        })
+
+})
 export const paymentsController = {
     createPayment,
-    handleWebhook
+    handleWebhook,
+    confirmPayment,
 }
