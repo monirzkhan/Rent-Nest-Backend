@@ -26,14 +26,14 @@ const loginUser = catchAsync( async (req: Request, res: Response, next: NextFunc
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: 1000 * 60 * 60 * 24  // 1 days
         });
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
         });
 

@@ -2,10 +2,10 @@
 	"info": {
 		"_postman_id": "cf30ffa0-96f2-44d5-a2cc-3047ba9bd05a",
 		"name": "RentNest Backend API",
-		"description": "## Introduction\n\n**RentNest** is a secure RESTful API for a property rental platform where landlords can list properties, tenants can browse and request rentals, and payments are processed securely using Stripe.\n\nThe API follows REST principles, JWT authentication, role-based authorization, and consistent response structures.\n\n**Base URL**\n\n``` http\nhttp://localhost:5000/api\n\n ```\n\n**Production**\n\n```\nhttps://rentnest-seven.vercel.app/api\n\n ```",
+		"description": "## Introduction\n\n**RentNest** is a secure RESTful API for a property rental platform where landlords can list properties, tenants can browse and request rentals, and payments are processed securely using Stripe.\n\nThe API follows REST principles, JWT authentication, role-based authorization, and consistent response structures.\n\n**Base URL**\n\n``` http\nhttps://rentnest-seven.vercel.app\n\n ```",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "55043461",
-		"_collection_link": "https://odvutkabbo-4812512.postman.co/workspace/b7a54be5-084d-4aac-8394-531758099c4d/collection/55043461-cf30ffa0-96f2-44d5-a2cc-3047ba9bd05a?action=share&source=collection_link&creator=55043461"
+		"_collection_link": "https://odvutkabbo-4812512.postman.co/workspace/Mohammad-Moniruzzaman's-Workspa~b7a54be5-084d-4aac-8394-531758099c4d/collection/55043461-cf30ffa0-96f2-44d5-a2cc-3047ba9bd05a?action=share&source=collection_link&creator=55043461"
 	},
 	"item": [
 		{
@@ -18,7 +18,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"landlord10@gmail.com\",\n    \"name\": \"Landlord Nur Mohol\",\n    \"password\": \"123456\",\n    \"profilePhoto\": \"www.google.com\",\n    \"bio\": \"This is First Post with hashpassword\",\n    \"role\": \"TENANT\"\n}",
+							"raw": "{\n    \"email\": \"test-landlord13@gmail.com\",\n    \"name\": \"Test Landlord 13\",\n    \"password\": \"123456\",\n    \"profilePhoto\": \"www.google.com\",\n    \"bio\": \"This is First Post with hashpassword\",\n    \"role\": \"LANDLORD\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -26,12 +26,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/auth/register",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/auth/register",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"auth",
@@ -40,144 +41,7 @@
 						},
 						"description": "**POST**\n\n```\nPOST /auth/register\n\n ```\n\n### Request Body\n\n``` json\n{\n    \"email\": \"tenant-test@gmail.com\",\n    \"name\": \"Md. Moniruzzaman\",\n    \"password\": \"123456\",\n    \"profilePhoto\": \"www.google.com\",\n    \"bio\": \"This is First Post with hashpassword\",\n    \"role\": \"TENANT\"\n}\n\n ```\n\n### Response\n\n``` json\n{  \n\"success\": true,  \n\"statusCode\": 201,\n\"message\": \"User registered successfully\", \n\"data\": {}\n}\n\n ```"
 					},
-					"response": [
-						{
-							"name": "New Request",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"landlord10@gmail.com\",\n    \"name\": \"Landlord Nur Mohol\",\n    \"password\": \"123456\",\n    \"profilePhoto\": \"www.google.com\",\n    \"bio\": \"This is First Post with hashpassword\",\n    \"role\": \"TENANT\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/api/auth/register",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"auth",
-										"register"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "563"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"233-fn5hpkSd5GbbK1BykTB41ZFGmJw\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 11 Jul 2026 01:04:23 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"User is Created Successfully\",\n    \"success\": true,\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"139a8f94-0f75-4118-bf66-2ba7505e7bce\",\n        \"name\": \"Landlord Nur Mohol\",\n        \"email\": \"landlord10@gmail.com\",\n        \"role\": \"TENANT\",\n        \"activeStatus\": \"ACTIVE\",\n        \"createdAt\": \"2026-07-11T01:04:23.135Z\",\n        \"updatedAt\": \"2026-07-11T01:04:23.135Z\",\n        \"profile\": {\n            \"id\": \"91c785b0-201c-4007-91a0-8fbc7c0eb06d\",\n            \"profilePhoto\": \"www.google.com\",\n            \"bio\": \"This is First Post with hashpassword\",\n            \"userId\": \"139a8f94-0f75-4118-bf66-2ba7505e7bce\",\n            \"createdAt\": \"2026-07-11T01:04:23.135Z\",\n            \"updatedAt\": \"2026-07-11T01:04:23.135Z\"\n        }\n    }\n}"
-						},
-						{
-							"name": "Create User",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"landlord10@gmail.com\",\n    \"name\": \"Landlord Nur Mohol\",\n    \"password\": \"123456\",\n    \"profilePhoto\": \"www.google.com\",\n    \"bio\": \"This is First Post with hashpassword\",\n    \"role\": \"TENANT\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/api/auth/register",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"auth",
-										"register"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "563"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"233-fn5hpkSd5GbbK1BykTB41ZFGmJw\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 11 Jul 2026 01:04:23 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"User is Created Successfully\",\n    \"success\": true,\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"139a8f94-0f75-4118-bf66-2ba7505e7bce\",\n        \"name\": \"Landlord Nur Mohol\",\n        \"email\": \"landlord10@gmail.com\",\n        \"role\": \"TENANT\",\n        \"activeStatus\": \"ACTIVE\",\n        \"createdAt\": \"2026-07-11T01:04:23.135Z\",\n        \"updatedAt\": \"2026-07-11T01:04:23.135Z\",\n        \"profile\": {\n            \"id\": \"91c785b0-201c-4007-91a0-8fbc7c0eb06d\",\n            \"profilePhoto\": \"www.google.com\",\n            \"bio\": \"This is First Post with hashpassword\",\n            \"userId\": \"139a8f94-0f75-4118-bf66-2ba7505e7bce\",\n            \"createdAt\": \"2026-07-11T01:04:23.135Z\",\n            \"updatedAt\": \"2026-07-11T01:04:23.135Z\"\n        }\n    }\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "Login User",
@@ -186,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"landlord5@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n\t\"email\": \"test-tenant12@gmail.com\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -194,12 +58,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/auth/login",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/auth/login",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"auth",
@@ -213,15 +78,32 @@
 				{
 					"name": "My Profile",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGVzdCBUZW5hbnQiLCJpZCI6Ijc1MzFhZTU2LTk1NTgtNDc4Zi04ZDE5LTZmMDY3MjAwOTczMiIsImVtYWlsIjoidGVzdC10ZW5hbnRAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkME9xNThsdUVJaVBzLjJoeTlITEdwLldPSVRlY2lCdXkvMXFwcTNvWDdIdG0wa3ZlRHM4VksiLCJyb2xlIjoiVEVOQU5UIiwiaWF0IjoxNzgzNzc0MzA1LCJleHAiOjE3ODM4NjA3MDV9.TOIvBTw18kz5oDEJcfSNSRJGl0aLpqnaGeANnVhpZ8I",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGVzdCBUZW5hbnQiLCJpZCI6Ijc1MzFhZTU2LTk1NTgtNDc4Zi04ZDE5LTZmMDY3MjAwOTczMiIsImVtYWlsIjoidGVzdC10ZW5hbnRAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkME9xNThsdUVJaVBzLjJoeTlITEdwLldPSVRlY2lCdXkvMXFwcTNvWDdIdG0wa3ZlRHM4VksiLCJyb2xlIjoiVEVOQU5UIiwiaWF0IjoxNzgzNzc0MzA1LCJleHAiOjE3ODM4NjA3MDV9.TOIvBTw18kz5oDEJcfSNSRJGl0aLpqnaGeANnVhpZ8I",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3000/api/auth/me",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/auth/me",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"auth",
@@ -239,13 +121,13 @@
 			"name": "Categories",
 			"item": [
 				{
-					"name": "Create Category",
+					"name": "Create Category (Landlord)",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Office\",\n  \"slug\": \"office\",\n  \"description\": \"Commercial Office for rent.\"\n}",
+							"raw": "{\n  \"name\": \"Parking\",\n  \"slug\": \"parking\",\n  \"description\": \"Commercial Parking for rent.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -253,12 +135,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/categories",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/categories",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"categories"
@@ -269,17 +152,18 @@
 					"response": []
 				},
 				{
-					"name": "All Categories",
+					"name": "All Categories (Public)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/categories",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/categories",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"categories"
@@ -300,12 +184,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/properties?limit=3&page=1&sortBy=createdAt&sortOrder=desc",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/properties?limit=10&page=1&sortBy=createdAt&sortOrder=desc",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"properties"
@@ -338,7 +223,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "3"
+									"value": "10"
 								},
 								{
 									"key": "page",
@@ -350,8 +235,7 @@
 								},
 								{
 									"key": "sortOrder",
-									"value": "desc",
-									"description": "desc"
+									"value": "desc"
 								}
 							]
 						},
@@ -365,16 +249,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/properties/d022b548-d978-4cb6-a86d-34a2f2b8e058",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/properties/c654923e-c597-455e-866d-63789d2ddcaf",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"properties",
-								"d022b548-d978-4cb6-a86d-34a2f2b8e058"
+								"c654923e-c597-455e-866d-63789d2ddcaf"
 							]
 						},
 						"description": "```\n/auth/properties/:id\n\n ```"
@@ -393,7 +278,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"Luxury 4-Bedroom Penthouse\",\n  \"description\": \"An elegant penthouse with stunning city views, premium interiors, spacious living room, modern kitchen, rooftop access, private parking, lift, generator backup, and 24/7 security.\",\n  \"rentAmount\": 85000,\n  \"bedrooms\": 4,\n  \"bathrooms\": 4,\n  \"areas\": 3200,\n  \"address\": \"House 22, Road 11, Banani, Dhaka, Bangladesh\",\n  \"thumbnail\": \"https://images.unsplash.com/photo-1512917774080-9991f1c4c750\",\n  \"images\": [\n    \"https://images.unsplash.com/photo-1512917774080-9991f1c4c750\",\n    \"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688\",\n    \"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85\",\n    \"https://images.unsplash.com/photo-1494526585095-c41746248156\"\n  ],\n  \"status\": \"AVAILABLE\",\n  \"categoryId\": \"51bfeab7-ee9c-4893-a051-51c637c9d9d8\"\n}",
+							"raw": "{\n  \"title\": \"Affordable 1-Bedroom Studio Apartment\",\n  \"description\": \"A compact and modern studio apartment ideal for students or professionals. Includes a bedroom, attached bathroom, open kitchen, Wi-Fi readiness, lift access, and 24/7 security.\",\n  \"rentAmount\": 18000,\n  \"bedrooms\": 1,\n  \"bathrooms\": 1,\n  \"areas\": 650,\n  \"address\": \"House 18, Road 5, Bashundhara R/A, Dhaka, Bangladesh\",\n  \"thumbnail\": \"https://images.unsplash.com/photo-1484154218962-a197022b5858\",\n  \"images\": [\n    \"https://images.unsplash.com/photo-1484154218962-a197022b5858\",\n    \"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688\",\n    \"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85\",\n    \"https://images.unsplash.com/photo-1460317442991-0ec209397118\"\n  ],\n  \"status\": \"AVAILABLE\",\n  \"categoryId\": \"51bfeab7-ee9c-4893-a051-51c637c9d9d8\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -401,12 +286,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/landlord/properties",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/landlord/properties",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"landlord",
@@ -423,12 +309,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/landlord/properties",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/landlord/properties",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"landlord",
@@ -445,12 +332,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/landlord/requests",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/landlord/requests",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"landlord",
@@ -476,17 +364,18 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/landlord/requests/cmrcosxwq0000719t4vty7fku",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/landlord/requests/cmrgimble000004l746d9iwir",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"landlord",
 								"requests",
-								"cmrcosxwq0000719t4vty7fku"
+								"cmrgimble000004l746d9iwir"
 							]
 						},
 						"description": "**PATCH**\n\n```\n/auth/landlord/properties/request/:id\n\n ```"
@@ -499,12 +388,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/landlord/properties/0a45f47e-5c0a-4d35-b24e-fc1fb0983300",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/landlord/properties/0a45f47e-5c0a-4d35-b24e-fc1fb0983300",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"landlord",
@@ -531,12 +421,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/landlord/properties/0a45f47e-5c0a-4d35-b24e-fc1fb0983300",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/landlord/properties/0a45f47e-5c0a-4d35-b24e-fc1fb0983300",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"landlord",
@@ -554,12 +445,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/landlord/properties/5f7689fe-6285-4678-b5f4-a36a493fd66f",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/landlord/properties/5f7689fe-6285-4678-b5f4-a36a493fd66f",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"landlord",
@@ -583,7 +475,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"propertyId\": \"c654923e-c597-455e-866d-63789d2ddcaf\",\n  \"moveInDate\": \"2027-01-01T00:00:00.000Z\",\n  \"durationMonths\": 18,\n  \"message\": \"I would like to rent this apartment for one 1.5 years. I have a stable job and can provide all required documents.\"\n}",
+							"raw": "{\n  \"propertyId\": \"0fb614be-adc2-4135-ab24-5154e99103b4\",\n  \"moveInDate\": \"2027-02-01T00:00:00.000Z\",\n  \"durationMonths\": 5,\n  \"message\": \"I would like to rent this apartment for 5 months. I have a stable job and can provide all required documents.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -591,12 +483,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/rentals",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/rentals",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"rentals"
@@ -612,12 +505,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/rentals/cmrfdqvpt0000g89tj6dsizfx",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/rentals/cmrfdqvpt0000g89tj6dsizfx",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"rentals",
@@ -634,12 +528,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/rentals",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/rentals",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"rentals"
@@ -661,7 +556,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"propertyId\": \"d022b548-d978-4cb6-a86d-34a2f2b8e058\",\n  \"rating\": 5,\n  \"comment\": \"Beautiful VIlla. The Villa was clean, spacious, and exactly as described. The landlord was responsive and helpful throughout the rental period.\"\n}",
+							"raw": "{\n  \"propertyId\": \"0fb614be-adc2-4135-ab24-5154e99103b4\",\n  \"rating\": 4,\n  \"comment\": \"Beautiful Mini Apartment. The Apartment was clean, spacious, and exactly as described. The landlord was responsive and helpful throughout the rental period.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -669,12 +564,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/reviews",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/reviews",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"reviews"
@@ -695,12 +591,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/admin/users",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/admin/users",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"admin",
@@ -717,12 +614,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/admin/properties",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/admin/properties",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"admin",
@@ -739,12 +637,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/admin/rentals",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/admin/rentals",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"admin",
@@ -770,17 +669,18 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/admin/users/c56b1b50-fff9-4485-b7a8-19ad486adb79",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/admin/users/037d28e2-6957-4b51-9678-1f098c569131",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"admin",
 								"users",
-								"c56b1b50-fff9-4485-b7a8-19ad486adb79"
+								"037d28e2-6957-4b51-9678-1f098c569131"
 							]
 						},
 						"description": "# PUT\n\n```\n/auth/admin/users/:id\n\n ```"
@@ -790,16 +690,16 @@
 			]
 		},
 		{
-			"name": "Payment (Tenant)",
+			"name": "Payment (Tenant & Landlord)",
 			"item": [
 				{
-					"name": "Create Payment",
+					"name": "Create Payment (Tenant)",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"rentalRequestId\":\"cmrfh7vid0000x69tagbewrsm\"\n}",
+							"raw": "{\n    \"rentalRequestId\":\"cmrgimble000004l746d9iwir\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -807,12 +707,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/payments/create",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/payments/create",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"payments",
@@ -824,13 +725,13 @@
 					"response": []
 				},
 				{
-					"name": "Confirm Payment",
+					"name": "Confirm Payment (Landlord)",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sessionId\":\"cs_test_a1gUrKTCgOQFxkpC6Mtw5Y7KxGkBAXMhhGlwIfefNt4oUVh1PN0HvE0axP\"\n}",
+							"raw": "{\n    \"sessionId\":\"cs_test_a1zJ03CeXveCL0wYhjeSH6fXVwtVbrCZYdIQoZmrOugPEJ6bCEWYBqQCag\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -838,12 +739,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/payments/confirm",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/payments/confirm",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"payments",
@@ -860,12 +762,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/payments/",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/payments/",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"payments",
@@ -882,12 +785,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/payments/cmrfhg1bq0000m59tnwl1qwrm",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/payments/cmrfhg1bq0000m59tnwl1qwrm",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"payments",
@@ -909,12 +813,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/payments/confirm/confirm",
-							"protocol": "http",
+							"raw": "https://rentnest-seven.vercel.app/api/payments/confirm/confirm",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"rentnest-seven",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"payments",

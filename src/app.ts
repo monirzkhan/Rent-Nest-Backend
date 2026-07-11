@@ -17,7 +17,10 @@ import { stripe } from "./lib/stripe";
 
 const app: Application = express();
 
-app.use(cors())
+app.use(cors({
+    origin: config.app_url,
+    credentials: true
+}))
 const endpointSecret = config.stripeWebhookEndpointSecret
 app.use('/api/payments/webhook', express.raw({ type: 'application/json' }))
 // app.use('/api/payments/webhook', express.raw({ type: 'application/json' }), (request, response) => {
