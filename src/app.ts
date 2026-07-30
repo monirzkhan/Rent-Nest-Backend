@@ -77,10 +77,11 @@ app.use(cookieParser())
 
 app.get('/', (req: Request, res: Response) => {
     res.send({
-        "Application_Name": "RentNest",
+        "Application_Name": "RentNest Backend",
         "version": "1.0.0",
         "Author": "Md. Moniruzzaman",
-        "E-mail": "mmonirz.dev@gmail.com"
+        "E-mail": "mmonirz.dev@gmail.com",
+        "Mobile": "+8801782421132"
     })
 
 })
