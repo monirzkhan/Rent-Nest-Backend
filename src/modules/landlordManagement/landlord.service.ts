@@ -21,7 +21,8 @@ const getAllPropertiesFromDb = async () => {
     const properties = await prisma.property.findMany({
         include: {
             category: true,
-            landlord: true
+            landlord: true,
+            reviews: true
         },
     });
     return properties;
@@ -34,7 +35,8 @@ const getPropertyByIdFromDb = async (propertyId: string) => {
         },
         include: {
             category: true,
-            landlord: true
+            landlord: true,
+            reviews: true
         }
     });
     return property;

@@ -115,6 +115,7 @@ const getAllPropertiesfromDb = async (query: IPropertyQuery) => {
         },
         include: {
             category: true,
+            reviews: true,
             landlord: {
                 omit: {
                     password: true
@@ -133,6 +134,7 @@ const getPropertyByIdFromDb = async (propertyId: string) => {
         },
         include: {
             category: true,
+            reviews: true,
             landlord: {
                 omit: {
                     password: true

@@ -202,6 +202,11 @@ const confirmPaymentIntoDb = async (sessionId: string) => {
 
 const getPaymentHistoryfromDb = async (userId: string) => {
     const result = await prisma.payment.findMany({
+        where: {
+            rentalRequest: {
+                tenantId: userId
+            }
+        },
         include:{
             rentalRequest: true
         }
