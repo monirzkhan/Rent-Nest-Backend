@@ -60,8 +60,8 @@ const createPaymentIntoDb = async (tenantId: string, rentalRequestId: string) =>
             mode: "payment",
             customer: stripeCustomerId,
             payment_method_types: ["card"],
-            success_url: `${config.app_url_frontend}/payment/successfull`,
-            cancel_url: `${config.app_url_frontend}/payment/cancel`,
+            success_url: `${config.app_url_frontend}/dashboard/tenant/mypayment/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${config.app_url_frontend}/dashboard/tenant/mypayment/payment/cancel`,
             metadata: {
                 userId: tenantId,
                 rentalRequestId,
