@@ -9,6 +9,7 @@ path:path.join(process.cwd(), '.env')
 export default{
     path: process.env.PORT,
     app_url:process.env.APP_URL,
+    app_url_frontend:process.env.APP_URL_FRONTEND,
     dataBaseUrl: process.env.DATABASE_URL,
     bcryptSaltRounds: process.env.BCRYPT_SALT_ROUNDS!,
     jwtAccessSecret:process.env.JWT_ACCESS_SECRET!,

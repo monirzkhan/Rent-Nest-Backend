@@ -60,8 +60,8 @@ const createPaymentIntoDb = async (tenantId: string, rentalRequestId: string) =>
             mode: "payment",
             customer: stripeCustomerId,
             payment_method_types: ["card"],
-            success_url: `${config.app_url}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${config.app_url}/payment/cancel`,
+            success_url: `${config.app_url_frontend}/payment/success`,
+            cancel_url: `${config.app_url_frontend}/payment/cancel`,
             metadata: {
                 userId: tenantId,
                 rentalRequestId,
@@ -213,7 +213,6 @@ const getPaymentHistoryByIdfromDb = async (paymentId: string) => {
     const result = await prisma.payment.findFirstOrThrow({
         where:{
             id: paymentId,
-            
         },
         include:{
             rentalRequest:true,
