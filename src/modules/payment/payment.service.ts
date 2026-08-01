@@ -88,7 +88,7 @@ const handleWebhook = async (payload: Buffer, signature: string) => {
     // Handle the event
     switch (event.type) {
         case 'checkout.session.completed':
-            handleCheckoutComplete(event.data.object)
+           await handleCheckoutComplete(event.data.object)
 
             break;
         case 'payment_intent.succeeded':
