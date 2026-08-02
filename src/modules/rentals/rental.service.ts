@@ -20,13 +20,15 @@ const createRentalRequestIntoDb = async (payload: IRentalRequest, tenantId: stri
     const existingRentalRequest = await prisma.rentalRequest.findFirst({
         where: {
             tenantId,
-            propertyId: payload.propertyId
-
+            propertyId: payload.propertyId,
+            status: {
+                in: ["PENDING", "APPROVED"]
+            }
         }
     })
 
-    if(existingRentalRequest){
-        throw new Error("Tenant has already requested to rent for this property")
+    if (existingRentalRequest) {
+        throw new Error("Tenant already has an active rental request for this property.")
     }
 
     const result = await prisma.rentalRequest.create({

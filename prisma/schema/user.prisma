@@ -10,7 +10,7 @@ model User {
     updatedAt DateTime @updatedAt
 
     profile        Profile?
-    property       Property?
+    properties     Property[]
     rentalRequests RentalRequest[]
     reviews        Review[]
 
