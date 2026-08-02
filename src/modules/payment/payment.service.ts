@@ -77,7 +77,8 @@ const createPaymentIntoDb = async (tenantId: string, rentalRequestId: string) =>
 };
 
 const handleWebhook = async (payload: Buffer, signature: string) => {
-    const endpointSecret = config.stripeWebhookEndpointSecret
+    const endpointSecret = config.stripeWebhookEndpointSecret;
+    console.log("Webhook Secret:", endpointSecret?.substring(0, 12));
     const event = stripe.webhooks.constructEvent(
         payload,
         signature,
