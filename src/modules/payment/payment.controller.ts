@@ -9,7 +9,7 @@ const createPayment = catchAsync(async (req: Request, res: Response, next: NextF
 
     const tenantId = req.user?.id;
     const rentalRequestId = req.body.rentalRequestId;
-    console.log(rentalRequestId);
+    
     if (!tenantId) {
         return next(new Error("Tenant ID is missing in the request"));
     }
@@ -24,36 +24,36 @@ const createPayment = catchAsync(async (req: Request, res: Response, next: NextF
 })
 
 
-// const handleWebhook = catchAsync(
-//     async (req: Request, res: Response, next: NextFunction) => {
+const handleWebhook = catchAsync(
+    async (req: Request, res: Response, next: NextFunction) => {
         
-//         const event = req.body as Buffer;
-//         const signature = req.headers['stripe-signature']!;
+        const event = req.body as Buffer;
+        const signature = req.headers['stripe-signature']!;
 
-//         await paymentService.handleWebhook(event, signature as string)
+        await paymentService.handleWebhook(event, signature as string)
 
-//         sendResponse(res, {
-//             success: true,
-//             statusCode: 200,
-//             message: "Webhook triggered successfully",
-//             data: null
-//         })
-//     }
-// )
+        sendResponse(res, {
+            success: true,
+            statusCode: 200,
+            message: "Webhook triggered successfully",
+            data: null
+        })
+    }
+)
 
-const handleWebhook = catchAsync(async (req, res) => {
-    console.log("========== WEBHOOK ==========");
-    console.log("Buffer:", Buffer.isBuffer(req.body));
-    console.log("Content-Type:", req.headers["content-type"]);
-    console.log("Signature:", req.headers["stripe-signature"]);
+// const handleWebhook = catchAsync(async (req, res) => {
+//     console.log("========== WEBHOOK ==========");
+//     console.log("Buffer:", Buffer.isBuffer(req.body));
+//     console.log("Content-Type:", req.headers["content-type"]);
+//     console.log("Signature:", req.headers["stripe-signature"]);
 
-    const event = req.body as Buffer;
-    const signature = req.headers["stripe-signature"]!;
+//     const event = req.body as Buffer;
+//     const signature = req.headers["stripe-signature"]!;
 
-    await paymentService.handleWebhook(event, signature as string);
+//     await paymentService.handleWebhook(event, signature as string);
 
-    res.status(200).send({ received: true });
-});
+//     res.status(200).send({ received: true });
+// });
 
 const confirmPayment = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 
