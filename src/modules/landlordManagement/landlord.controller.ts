@@ -19,7 +19,8 @@ const createProperty =catchAsync(async(req: Request, res: Response, next: NextFu
 })
 
 const getAllProperties = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
-    const result = await landlordService.getAllPropertiesFromDb();
+    const id = req.user?.id;
+    const result = await landlordService.getAllPropertiesFromDb(id as string);
     sendResponse(res,{
         statusCode: HttpStatus.OK,
         success: true,
