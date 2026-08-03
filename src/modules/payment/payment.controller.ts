@@ -70,7 +70,8 @@ const confirmPayment = catchAsync(async (req: Request, res: Response, next: Next
 
 const getPaymentHistory = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const userId = req.user?.id
-    const result = await paymentService.getPaymentHistoryfromDb(userId as string)
+    const role = req.user?.role
+    const result = await paymentService.getPaymentHistoryfromDb(userId as string, role)
 
     sendResponse(res, {
         success: true,
@@ -82,8 +83,10 @@ const getPaymentHistory = catchAsync(async (req: Request, res: Response, next: N
 const getPaymentHistoryById = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 
     const paymentId = req.params.id
+    const userId = req.user?.id
+    const role = req.user?.role
 
-    const result = await paymentService.getPaymentHistoryByIdfromDb(paymentId as string)
+    const result = await paymentService.getPaymentHistoryByIdfromDb(paymentId as string, userId as string, role)
 
     sendResponse(res, {
         success: true,

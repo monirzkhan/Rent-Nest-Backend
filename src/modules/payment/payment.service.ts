@@ -61,7 +61,7 @@ const createPaymentIntoDb = async (tenantId: string, rentalRequestId: string) =>
             customer: stripeCustomerId,
             payment_method_types: ["card"],
             success_url: `${config.app_url_frontend}/dashboard/tenant/myPayment/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${config.app_url_frontend}/dashboard/tenant/myPayment/payment/cancel`,
+            cancel_url: `${config.app_url_frontend}/dashboard/tenant/myPayment/cancel`,
             metadata: {
                 userId: tenantId,
                 rentalRequestId,
@@ -201,33 +201,49 @@ const confirmPaymentIntoDb = async (sessionId: string) => {
 
 }
 
-const getPaymentHistoryfromDb = async (userId: string) => {
+const getPaymentHistoryfromDb = async (userId: string, role?: string) => {
+    const where =
+        role === "LANDLORD"
+            ? { rentalRequest: { property: { landlordId: userId } } }
+            : role === "TENANT"
+                ? { rentalRequest: { tenantId: userId } }
+                : {};
+
     const result = await prisma.payment.findMany({
-        where: {
+        where,
+        include: {
             rentalRequest: {
-                tenantId: userId
-            }
+                include: {
+                    tenant: true,
+                    property: true,
+                },
+            },
         },
-        include:{
-            rentalRequest: true
-        }
-    })
-    return result
+    });
+    return result;
+};
 
-}
-const getPaymentHistoryByIdfromDb = async (paymentId: string) => {
+const getPaymentHistoryByIdfromDb = async (paymentId: string, userId?: string, role?: string) => {
+    const where =
+        role === "TENANT"
+            ? { id: paymentId, rentalRequest: { tenantId: userId } }
+            : role === "LANDLORD"
+                ? { id: paymentId, rentalRequest: { property: { landlordId: userId } } }
+                : { id: paymentId };
+
     const result = await prisma.payment.findFirstOrThrow({
-        where:{
-            id: paymentId,
+        where,
+        include: {
+            rentalRequest: {
+                include: {
+                    tenant: true,
+                    property: true,
+                },
+            },
         },
-        include:{
-            rentalRequest:true,
-            
-        }
-    })
-    return result
-
-}
+    });
+    return result;
+};
 
 export const paymentService = {
     createPaymentIntoDb,
