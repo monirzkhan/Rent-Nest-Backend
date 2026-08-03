@@ -175,7 +175,7 @@ const confirmPaymentIntoDb = async (sessionId: string) => {
             },
 
             data: {
-                status: "COMPLETED"
+                status: "ACTIVE"
             }
 
         });

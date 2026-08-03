@@ -7,7 +7,7 @@ const createReviewIntoDb = async (payload: IReview, tenantId: string) => {
         where: {
             propertyId: payload.propertyId,
             tenantId: tenantId,
-            status: "COMPLETED"
+            status: "ACTIVE"
         }
     })
 
